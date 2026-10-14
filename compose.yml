@@ -1,7 +1,7 @@
 ---
 services:
   db:
-    image: shaikmustafa/arshad:db
+    image: sravanif5/flm-oct:db
     deploy:
       replicas: 1
     ports:
@@ -10,9 +10,9 @@ services:
       - mynetwork
 
   auth_service:
-    image: shaikmustafa/arshad:auth
+    image: sravanif5/flm-oct:pythonappauth
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5001:5001"
     networks:
@@ -22,9 +22,9 @@ services:
     
 
   book_service:
-    image: shaikmustafa/arshad:book
+    image: sravanif5/flm-oct:pythonappbook
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5002:5002"
     networks:
@@ -32,9 +32,9 @@ services:
     depends_on:
       - db
   borrow_service:
-    image: shaikmustafa/arshad:borrow
+    image: sravanif5/flm-oct:pythonappborrow
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5003:5003"
     networks:
@@ -43,9 +43,9 @@ services:
       - db
 
   frontend:
-    image: shaikmustafa/arshad:frontend
+    image: sravanif5/flm-oct:pythonappfrontned
     deploy:
-      replicas: 1
+      replicas: 2
     ports:
       - "5000:5000"
     networks:
