@@ -10,6 +10,15 @@ pipeline{
                 git 'https://github.com/Sravani-Meduri/python-code-library-app.git'
             }
         }
+         stage('Build') {
+            steps {
+                sh '''
+                    python3 --version
+                    python3 -m pip --version
+                    python3 -m pip install -r requirements.txt
+                    python3 -m compileall -q .
+                '''
+    }
          stage('SonarQube Analysis') {
              steps{
                  script{
